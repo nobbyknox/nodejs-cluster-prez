@@ -10,5 +10,6 @@ $ open index.html
 
 # or start an HTTP server
 
-$ live-server
+$ npm i simplehttpserver -g
+$ simplehttpserver .
 ```
