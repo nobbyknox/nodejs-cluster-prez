@@ -11,6 +11,12 @@ http.createServer(function (req, res) {
 
         // console.log(chalk.black.bgGreen(`Bug patched, from ${process.pid}`));
         // res.end(`Bug fixed, from ${process.pid}\n`);
+    } else if (req.url === '/up') {
+        process.send( { tune: 'up' });
+        res.end(`Process ${process.pid} called for more workers\n`);
+    } else if (req.url === '/down') {
+        process.send( { tune: 'down' });
+        res.end(`Process ${process.pid} called for less workers\n`);
     } else {
         res.end(`Hello world, from ${process.pid}\n`);
     }

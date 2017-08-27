@@ -6,7 +6,7 @@
 
 const cluster = require('cluster');
 const numCpus = require('os').cpus().length;
-const workerCount = process.env.WORKER_COUNT || numCpus;
+let workerCount = process.env.WORKER_COUNT || numCpus;
 const chalk = require('chalk');
 
 // A list of workers queued for a restart
@@ -26,7 +26,26 @@ function forkNewWorkers() {
     if (!stopping) {
         for (var i = numWorkers(); i < workerCount; i++) {
             console.log(chalk.gray('forking...'));
-            cluster.fork();
+
+            const worker = cluster.fork();
+            worker.on('message', function (msg) {
+                console.log(chalk.white.bgBlue(`Master ${process.pid} received message from worker: ${JSON.stringify(msg)}`));
+
+                if (msg.tune === 'up') {
+                    workerCount++;
+                    forkNewWorkers();
+                } else {
+                    if (workerCount > 1) {
+                        workerCount--;
+                        for (const id in cluster.workers) {
+                            stopWorker(cluster.workers[id]);
+                            break;
+                        }
+                    } else {
+                        console.log(chalk.yellow('Cannot kill last worker'));
+                    }
+                }
+            });
         }
     }
 }
@@ -66,7 +85,7 @@ function stopAllWorkers() {
 // Once it is ready, we can signal the next worker to restart
 // cluster.on('listening', stopNextWorker);
 
-cluster.on('listening', function(worker) {
+cluster.on('listening', function (worker) {
     if (workersToStop && workersToStop.length > 0) {
         stopNextWorker();
         // setTimeout(() => {
