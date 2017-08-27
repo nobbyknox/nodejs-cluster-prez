@@ -1,0 +1,17 @@
+{
+    "name": "nodejs-cluster-prez",
+    "version": "1.0.0",
+    "description": "Nothing fancy, just a short Node.js cluster presentation",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:nobbyknox/nodejs-cluster-prez.git"
+    },
+    "author": "Nobby Knox <nobbyknox@gmail.com>",
+    "license": "ISC",
+    "homepage": "https://github.com/nobbyknox/nodejs-cluster-prez",
+    "dependencies": {
+        "chalk": "2.1.0",
+        "reveal.js": "3.5.0"
+    }
+}

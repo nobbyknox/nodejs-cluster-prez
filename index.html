@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Node.js Cluster</title>
+
+    <link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="node_modules/reveal.js/css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'node_modules/reveal.js/css/print/pdf.css' : 'node_modules/reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <section>
+                <h1>Node.js Clusters</h1>
+                <img src="images/title.png" alt="">
+                <p>I could not find an appropriate image, so I created this one</p>
+            </section>
+
+            <section>
+                <h3>Why Node.JS Clusters?</h3>
+
+                <ul>
+                    <li>A single Node.js instance runs as a single thread</li>
+                    <li>A cluster allows you to take advantage of multi-core systems</li>
+                    <li>The <i>cluster</i> module allows easy creation of child processes that all share server ports</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>How Does It Work?</h3>
+
+                <ul>
+                    <li>
+                        The worker processes are spawned using the
+                        <code style="color: orange">child_process.fork()</code> method, so that
+                        they can communicate with the parent via IPC (events) and pass server handles
+                        back and forth
+                    </li>
+                </ul>
+
+            </section>
+
+            <section>
+                <img src="images/yawn.gif" alt="">
+
+                <p>This is boring...</p>
+            </section>
+
+            <section>
+                <img src="images/screw-this.gif" alt="">
+
+                <p>Screw this. I'm out.</p>
+            </section>
+
+            <section>
+                <h3>Alternative Titles...</h3>
+
+                <section>
+                    <h4>Unbreakable Software</h4>
+                    <p>and where to find it</p>
+                </section>
+
+                <section>
+                    <h4>Unbreakable Software</h4>
+                    <p><strike>and how to create it</strike></p>
+                    <p>and how to create it</p>
+                </section>
+
+                <section>
+                    <h4>Hot Deployment</h4>
+                    <p>you're not serious?</p>
+                </section>
+
+                <section>
+                    <h4>Building Awesome Software</h4>
+                    <p>yourself...</p>
+                </section>
+            </section>
+
+            <section>
+                <h3>But... But...</h3>
+
+                <p>
+                    This talk is about Node.js taking advantage of multi-cores. Sup with
+                    <i>unbreakable</i> this and <i>hot deploy</i> that?
+                </p>
+
+                <!-- <p class="fragment visible" data-fragment-index="0">Now you're asking the right question</p> -->
+            </section>
+
+<!--             <section>
+                <h3>Ah!</h3>
+
+                <p>But now you are asking the right questions</p>
+            </section>
+ -->
+            <section>
+                <h3>Why This Demo?</h3>
+
+                <ul>
+                    <li>To talk about <span style="color: yellow">other</span> benefits of Node.js clusters - multi-core support is boring</li>
+                    <li>Show awesome possibilities using the cluster technology</li>
+                    <li>It's 😎</li>
+                    <li>This counts towards my peer review <i>knowledge sharing</i> metric - please remember it 😉</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>So, we can do other things with clusters?</h3>
+
+                <p>Yeah, stuff like:</p>
+
+                <ul>
+                    <li>Managing the worker threads ourselves</li>
+                    <li>Fork new workers when one dies</li>
+                    <li>Perform a controlled (staggered) hot deploy of our software</li>
+                    <li>Reduce/increase workers as load changes</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>But... But...</h3>
+
+                <p>(again)</p>
+
+                <p>We already have all this! Stuff like <span style="color: lightgreen;">HAProxy</span>, <span style="color: lightgreen;">Kubernetes</span> and other software as well.</p>
+
+                <p class="fragment visible" data-fragment-index="0" style="color: yellow">Are you seeing it yet?</p>
+
+                <p class="fragment visible" data-fragment-index="1">
+                    We can bake this right into our software. <span style="color: orange">And it's easy.</span>
+                </p>
+            </section>
+
+            <section>
+                <p>Let me show you</p>
+            </section>
+
+            <section>
+                <h3>Demo 1 - Tragic Death</h3>
+
+                <p>We have a little app, but... Oh No! It crashed.</p>
+
+                <ul>
+                    <li>Show worker.js</li>
+                    <li>Hit good endpoint
+                        <pre>curl http://127.0.0.1:3000</pre>
+                    </li>
+                    <li>Hit bad endpoint
+                        <pre>curl http://127.0.0.1:3000/break</pre>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Demo 2 - Inject Imortality</h3>
+
+                <p>(full zombie mode)</p>
+
+                <p>Take same app and convert it to a cluster worker. Create multiple workers.</p>
+
+                <ul>
+                    <li>Check out the workers in <i>htop</i></li>
+                    <li>Hit bad endpoint</li>
+                    <li>Show worker death and new worker that took its place</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Demo 3 - External Threats</h3>
+
+                <p>Execution space is a dangerous place</p>
+
+                <ul>
+                    <li>Check out the workers in <i>htop</i></li>
+                    <li>Hit bad endpoint</li>
+                    <li>Show worker death and new worker that took its place</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Demo 4 - Awesome Software</h3>
+
+                <p>Hot deployment - zero down time</p>
+
+                <ul>
+                    <li>Generate generious load on good endpoint</li>
+                    <li>Fix bug</li>
+                    <li>Hot deploy bug fix by sending <i>SIGHUP</i> to master process</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Demo 5 - All Together</h3>
+
+                <p>Increase/decrease the number of workers in real time with no down time</p>
+            </section>
+
+            <section>
+                <p>fin</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+    <script src="node_modules/reveal.js/js/reveal.js"></script>
+
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            dependencies: [
+                { src: 'node_modules/reveal.js/plugin/markdown/marked.js' },
+                { src: 'node_modules/reveal.js/plugin/markdown/markdown.js' },
+                { src: 'node_modules/reveal.js/plugin/notes/notes.js', async: true },
+                { src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+            ]
+        });
+    </script>
+</body>
+
+</html>
