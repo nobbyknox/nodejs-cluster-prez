@@ -50,7 +50,7 @@
                     <li>
                         The worker processes are spawned using the
                         <code style="color: orange">child_process.fork()</code> method, so that
-                        they can communicate with the parent via IPC (events) and pass server handles
+                        they can communicate with the parent via IPC and pass server handles
                         back and forth
                     </li>
                 </ul>
@@ -170,11 +170,11 @@
             </section>
 
             <section>
-                <h3>Demo 2 - Inject Imortality</h3>
+                <h3>Demo 2 - Inject Immortality</h3>
 
                 <p>(full zombie mode)</p>
 
-                <p>Take same app and convert it to a cluster worker. Create multiple workers.</p>
+                <p>Take same app and introduce master module. Create multiple workers.</p>
 
                 <ul>
                     <li>Check out the workers in <i>htop</i></li>
@@ -200,7 +200,7 @@
                 <p>Hot deployment - zero down time</p>
 
                 <ul>
-                    <li>Generate generious load on good endpoint</li>
+                    <li>Generate generous load on good endpoint</li>
                     <li>Fix bug</li>
                     <li>Hot deploy bug fix by sending <i>SIGHUP</i> (my implementation) to master process</li>
                 </ul>
