@@ -21,5 +21,3 @@ http.createServer(function (req, res) {
         res.end(`Hello world, from ${process.pid}\n`);
     }
 }).listen(port);
-
-console.log(chalk.gray(`${process.pid} listening on ${port}`));
