@@ -30,15 +30,27 @@
             <section>
                 <h1>Node.js Clusters</h1>
                 <img src="images/title.jpg" alt="" height="400">
+                <p>and other teetering avian cores</p>
             </section>
 
             <section>
-                <h3>Why Node.JS Clusters?</h3>
+                <h3>The Problem</h3>
+
+                <p>A single Node.js instance runs as a single thread</p>
 
                 <ul>
-                    <li>A single Node.js instance runs as a single thread</li>
+                    <li>Does not make use of multiple cores</li>
+                    <li>No parallel processing capability</li>
+                    <li>Potential for bottlenecks</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Say Hello to Node.JS Clusters</h3>
+
+                <ul>
                     <li>A cluster allows you to take advantage of multi-core systems</li>
-                    <li>The <i>cluster</i> module allows easy creation of child processes that all share server ports</li>
+                    <li>The <span style="color: yellow">cluster</span> module allows easy creation of child processes that all share server ports</li>
                 </ul>
             </section>
 
@@ -48,9 +60,10 @@
                 <ul>
                     <li>
                         The worker processes are spawned using the
-                        <code style="color: orange">child_process.fork()</code> method, so that
-                        they can communicate with the parent via IPC and pass server handles
-                        back and forth
+                        <code style="color: orange">child_process.fork()</code> method
+                    </li>
+                    <li>
+                        Processes communicate with the parent via IPC and pass server handles back and forth
                     </li>
                 </ul>
 
@@ -65,11 +78,13 @@
             <section>
                 <img src="images/screw-this.gif" alt="">
 
-                <p>Screw this. I'm out.</p>
+                <p>Screw this...</p>
             </section>
 
             <section>
-                <h3>Alternative Titles...</h3>
+                <h3>Let's Jazz it Up a Bit</h3>
+
+                <p>With a new title. What about the following?</p>
 
                 <section>
                     <h4>Unbreakable Software</h4>
@@ -83,33 +98,27 @@
                 </section>
 
                 <section>
-                    <h4>Hot Deployment</h4>
-                    <p>you're not serious?</p>
+                    <h4>Building Awesome Software</h4>
+                    <p>...yourself</p>
                 </section>
 
                 <section>
-                    <h4>Building Awesome Software</h4>
-                    <p>yourself...</p>
+                    <h4>Making DevOps Obsolete</h4>
+                    <p>One process at a time</p>
                 </section>
             </section>
 
             <section>
-                <h3>But... But...</h3>
+                <h3>But...</h3>
 
                 <p>
                     This talk is about Node.js taking advantage of multi-cores. Sup with
-                    <i>unbreakable</i> this and <i>hot deploy</i> that?
+                    <i>unbreakable</i> this and <i>devops</i> that?
                 </p>
 
                 <!-- <p class="fragment visible" data-fragment-index="0">Now you're asking the right question</p> -->
             </section>
 
-<!--             <section>
-                <h3>Ah!</h3>
-
-                <p>But now you are asking the right questions</p>
-            </section>
- -->
             <section>
                 <h3>Why This Demo?</h3>
 
@@ -135,7 +144,7 @@
             </section>
 
             <section>
-                <h3>But... But...</h3>
+                <h3>But...</h3>
 
                 <p>(again)</p>
 
@@ -144,7 +153,7 @@
                 <p class="fragment visible" data-fragment-index="0" style="color: yellow">Are you seeing it yet?</p>
 
                 <p class="fragment visible" data-fragment-index="1">
-                    We can bake this right into our software. <span style="color: orange">And it's easy.</span>
+                    We can bake this right into our software. <span style="color: orange">And it's easy!</span>
                 </p>
             </section>
 
@@ -196,7 +205,7 @@
             <section>
                 <h3>Demo 4 - Awesome Software</h3>
 
-                <p>Hot deployment - zero down time</p>
+                <p>Hot deployment with zero down time</p>
 
                 <ul>
                     <li>Generate generous load on good endpoint</li>
