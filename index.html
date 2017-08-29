@@ -84,7 +84,7 @@
             <section>
                 <h3>Let's Jazz it Up a Bit</h3>
 
-                <p>With a new title. What about the following?</p>
+                <p>What about a new title?</p>
 
                 <section>
                     <h4>Unbreakable Software</h4>
@@ -124,7 +124,7 @@
 
                 <ul>
                     <li>To talk about <span style="color: yellow">other</span> benefits of Node.js clusters - multi-core support is boring</li>
-                    <li>Show awesome possibilities using the cluster technology</li>
+                    <li>Show awesome possibilities using the <span style="color: yellow">cluster</span> technology</li>
                     <li>It's 😎</li>
                     <li>This counts towards my peer review <i>knowledge sharing</i> metric - please remember it 😉</li>
                 </ul>
@@ -136,7 +136,7 @@
                 <p>Yeah, stuff like:</p>
 
                 <ul>
-                    <li>Managing the worker threads ourselves</li>
+                    <li>Manage the worker processes ourselves</li>
                     <li>Fork new workers when one dies</li>
                     <li>Perform a controlled (staggered) hot deploy of our software</li>
                     <li>Increase/decrease workers as load changes</li>
@@ -162,12 +162,11 @@
             </section>
 
             <section>
-                <h3>Demo 1 - Tragic Death</h3>
+                <h3>Scene 1 - Tragic Death</h3>
 
                 <p>We have a little app, but... Oh No! It crashed.</p>
 
                 <ul>
-                    <li>Show worker.js</li>
                     <li>Hit good endpoint
                         <pre>curl http://127.0.0.1:3000</pre>
                     </li>
@@ -178,46 +177,48 @@
             </section>
 
             <section>
-                <h3>Demo 2 - Inject Immortality</h3>
-
-                <p>(full zombie mode)</p>
-
-                <p>Take same app and introduce master module. Create multiple workers.</p>
+                <h3>Scene 2 - Zombie Apocalypse</h3>
 
                 <ul>
-                    <li>Check out the workers in <i>htop</i></li>
-                    <li>Hit bad endpoint</li>
-                    <li>Show worker death and new worker that took its place</li>
+                    <li>Master module is run that manages worker processes</li>
+                    <li>Workers are shown in <i>htop</i></li>
+                    <li>Bad endpoint strikes again and kills a worker</li>
+                    <li>Dead worker is replaced by another</li>
                 </ul>
             </section>
 
             <section>
-                <h3>Demo 3 - External Threats</h3>
+                <h3>Scene 3 - External Threats</h3>
 
-                <p>Execution space is a dangerous place</p>
+                <p>(execution space is a dangerous place)</p>
 
                 <ul>
-                    <li>Kill workers randomly and by any means necessary</li>
-                    <li>Kill multiple workers at a time</li>
+                    <li>Meteors fall and workers die</li>
                 </ul>
             </section>
 
             <section>
-                <h3>Demo 4 - Awesome Software</h3>
+                <h3>Scene 4 - Awesome Software</h3>
 
-                <p>Hot deployment with zero down time</p>
+                <p>(hot deployment with zero down time)</p>
 
                 <ul>
-                    <li>Generate generous load on good endpoint</li>
-                    <li>Fix bug</li>
-                    <li>Hot deploy bug fix by sending <i>SIGHUP</i> (my implementation) to master process</li>
+                    <li>Constant and generous load on good endpoint</li>
+                    <li>Bug is fixed</li>
+                    <li>New version is hot-deployed without interrupting servicing of endpoints</li>
                 </ul>
             </section>
 
             <section>
-                <h3>Demo 5 - Grand Finale</h3>
+                <h3>Scene 5 - Grand Finale</h3>
 
-                <p>Increase/decrease the number of workers in real time with no down time</p>
+                <p>(scaling)</p>
+
+                <ul>
+                    <li>Worker receives request to increase/decrease workforce</li>
+                    <li>Worker notifies master of the request</li>
+                    <li>Master increases/decreases workers with no interruption to the execution of the system</li>
+                </ul>
             </section>
 
             <section>
